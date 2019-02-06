@@ -7,6 +7,7 @@ import { Grid, Col, Row } from "react-flexbox-grid";
 
 import "./App.css";
 import LocationList from "./components/LocationList";
+import ForecastExtendend from "./components/ForecastExtended";
 
 const cities = [
   "Buenos Aires,ar",
@@ -15,11 +16,19 @@ const cities = [
   "Paris,fr"
 ];
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      city: "Nueva Ciudad"
+    };
+  }
+
   handleSelectedLocation = city => {
-    console.log(`"handleSelectionLocation" ${city}`);
+    this.setState({ city });
   };
 
   render() {
+    const { city } = this.state;
     return (
       <Grid className="App">
         <Row>
@@ -40,7 +49,9 @@ class App extends Component {
           </Col>
           <Col xs={12} md={6}>
             <Paper elevation={4}>
-              <div className="details">Details</div>
+              <div className="details">
+                <ForecastExtendend city={city} />
+              </div>
             </Paper>
           </Col>
         </Row>
