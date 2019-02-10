@@ -15,6 +15,7 @@ const cities = [
   "Santa Monica,us",
   "Paris,fr"
 ];
+
 class App extends Component {
   constructor() {
     super();
