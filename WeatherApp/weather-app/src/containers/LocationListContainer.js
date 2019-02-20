@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 // REDUX IMPORTS
-import { setCity } from "./../actions";
+import { setSelectedCity } from "./../actions";
 
 import LocationList from "./../components/LocationList";
 
@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
     'setCity:' is the property mapped from 
     the 'setCity()' action creator.
     */
-  setCity: value => dispatch(setCity(value))
+  setCity: value => dispatch(setSelectedCity(value))
 });
 
 export default connect(
