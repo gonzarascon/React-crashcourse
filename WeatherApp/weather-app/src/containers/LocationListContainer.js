@@ -3,11 +3,15 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 // REDUX IMPORTS
-import { setSelectedCity } from "./../actions";
+import { setSelectedCity, setWeather } from "./../actions";
 
 import LocationList from "./../components/LocationList";
 
 class LocationListContainer extends Component {
+  componentDidMount() {
+    this.props.setWeather(this.props.cities);
+  }
+
   handleSelectedLocation = city => {
     this.props.setCity(city);
   };
@@ -26,7 +30,7 @@ class LocationListContainer extends Component {
 
 LocationListContainer.propTypes = {
   setCity: PropTypes.func.isRequired,
-  cities: PropTypes.array.isRequired
+  cities: PropTypes.array.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -34,7 +38,8 @@ const mapDispatchToProps = dispatch => ({
     'setCity:' is the property mapped from 
     the 'setCity()' action creator.
     */
-  setCity: value => dispatch(setSelectedCity(value))
+  setCity: value => dispatch(setSelectedCity(value)),
+  setWeather: cities => dispatch(setWeather(cities)),
 });
 
 export default connect(
